@@ -1,9 +1,10 @@
 from bots import play, jordan_strategy, casey_strategy, alex_strategy, taylor_strategy, human_player, random_strategy, mimic_strategy, rock_player, paper_player, scissors_player
-from contest import player
+from contest import player, player2
 
 
 strategies = [
-    ("player", player),
+    ("player", player), # add unique name
+    ("player2", player2), # add unique name
     ("alex_strategy", alex_strategy),
     ("casey_strategy", casey_strategy),
     ("taylor_strategy", taylor_strategy),

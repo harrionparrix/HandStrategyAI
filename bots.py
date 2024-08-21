@@ -41,6 +41,7 @@ def play(player1, player2, num_games, verbose=False):
     print(f"Player 1 win rate: {win_rate}%")
 
     return win_rate
+
 def play_game(player1, player2, num_games, verbose=False):
     p1_prev_play = ""
     p2_prev_play = ""

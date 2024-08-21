@@ -1,5 +1,6 @@
 import unittest
 from bots import play, jordan_strategy, casey_strategy, alex_strategy, taylor_strategy, mimic_strategy, rock_player, paper_player, scissors_player
+# change import to check base conditions only
 from contest import player
 
 
