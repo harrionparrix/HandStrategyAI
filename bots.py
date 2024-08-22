@@ -1,7 +1,6 @@
 import random
 
 def play(player1, player2, num_games, verbose=False):
-    print(f"Against: {player2.__name__}")
     p1_prev_play = ""
     p2_prev_play = ""
     results = {"p1": 0, "p2": 0, "tie": 0}
@@ -37,10 +36,11 @@ def play(player1, player2, num_games, verbose=False):
     else:
         win_rate = results['p1'] / games_won * 100
 
-    print("Final results:", results)
-    print(f"Player 1 win rate: {win_rate}%")
+    # print("Final results:", results)
+    # print(f"Player 1 win rate: {win_rate}%")
+    # print()
 
-    return win_rate
+    return results, win_rate
 
 def play_game(player1, player2, num_games, verbose=False):
     p1_prev_play = ""

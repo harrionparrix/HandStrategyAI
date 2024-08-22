@@ -1,10 +1,17 @@
 from bots import play_game, jordan_strategy, casey_strategy, alex_strategy, taylor_strategy, human_player, random_strategy, mimic_strategy, rock_player, paper_player, scissors_player
-from contest import player, player2
+from contest import hpx1, hpx2, hpx3, hpx4, hpx5
+import sys
+import time
+from datetime import datetime, timedelta
+import concurrent.futures
 
 
 strategies = [
-    ("player", player), # add unique name and function
-    ("player2", player2), # add unique name and function
+    ("ninja_case", hpx1),  # hpx - ninja_case
+    ("elden_ring", hpx2),  # hpx - elden_ring
+    ("Deez", hpx3),  # hpx - Deez
+    ("MnM", hpx4),  # hpx - MnM
+    ("SuperBaby", hpx5),  # hpx - SuperBaby
     ("alex_strategy", alex_strategy),
     ("casey_strategy", casey_strategy),
     ("taylor_strategy", taylor_strategy),
@@ -19,21 +26,64 @@ strategies = [
 
 scores = {name: 0 for name, _ in strategies}
 
-for i in range(len(strategies)):
-    for j in range(i + 1, len(strategies)):
-        name1, strat1 = strategies[i]
-        name2, strat2 = strategies[j]
-        
-        score1 = play_game(strat1, strat2, 1000)
-        score2 = play_game(strat2, strat1, 1000)
 
-        if score1 > score2:
-            scores[name1] += 1
-        elif score2 > score1:
-            scores[name2] += 1
-        else:
-            scores[name1] += 0.5
-            scores[name2] += 0.5
+# outer_iterations = 1000
+outer_iterations = 2
+total_strategies = len(strategies)
+total_pairs = total_strategies * (total_strategies - 1) // 2
+total_iterations = outer_iterations * total_pairs
+current_iteration = 0
+
+def print_loader(iteration, total, start_time, bar_length=50):
+    progress = iteration / total
+    block = int(bar_length * progress)
+    
+    bar = "#" * block + "-" * (bar_length - block)
+    elapsed_time = time.time() - start_time
+    eta = (elapsed_time / iteration) * (total - iteration) if iteration > 0 else 0
+    eta_td = timedelta(seconds=int(eta))
+
+    current_time = datetime.now().strftime("%H:%M:%S")
+    sys.stdout.write(
+        f"\r[{bar}] {int(progress * 100)}% | "
+        f"\nElapsed: {timedelta(seconds=int(elapsed_time))} | "
+        f"ETA: {eta_td} | "
+        f"Iteration: {iteration}/{total}"
+    )
+    sys.stdout.flush()
+
+def evaluate_strategy_pair(pair):
+    name1, strat1 = pair[0]
+    name2, strat2 = pair[1]
+
+    score1 = play_game(strat1, strat2, 1000)
+    score2 = play_game(strat2, strat1, 1000)
+
+    if score1 > score2:
+        return name1, name2, 1, 0
+    elif score2 > score1:
+        return name1, name2, 0, 1
+    else:
+        return name1, name2, 0.5, 0.5
+
+
+
+start_time = time.time()
+
+strategy_pairs = [(strategies[i], strategies[j]) for i in range(len(strategies)) for j in range(i + 1, len(strategies))]
+
+for _ in range(outer_iterations):
+
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        future_to_pair = {executor.submit(evaluate_strategy_pair, pair): pair for pair in strategy_pairs}
+        
+        for future in concurrent.futures.as_completed(future_to_pair):
+            name1, name2, score1, score2 = future.result()
+            scores[name1] += score1
+            scores[name2] += score2
+
+            current_iteration += 1
+            print_loader(current_iteration, total_iterations, start_time)
 
 
 ranked_strategies = sorted(scores.items(), key=lambda item: item[1], reverse=True)

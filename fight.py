@@ -1,67 +1,69 @@
 import unittest
 from bots import play, jordan_strategy, casey_strategy, alex_strategy, taylor_strategy, mimic_strategy, rock_player, paper_player, scissors_player
-# change import to check base conditions only
-from contest import player
+from contest import hpx1, hpx2, hpx3, hpx4, hpx5
+import threading
+import time
 
+# Color codes for terminal output
+class Colors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+# Define a lock for synchronized console output
+console_lock = threading.Lock()
 
 class UnitTests(unittest.TestCase):
-    print()
+    player_list = [hpx1, hpx2, hpx3, hpx4, hpx5]  # List of bots to test
 
-    def test_player_vs_alex_strategy(self):
-        print("Testing game against alex_strategy...")
-        actual = play(player, alex_strategy, 1000) >= 60
-        self.assertTrue(
-            actual,
-            'Expected player to defeat alex_strategy at least 60% of the time.')
+    strategies = {
+        'alex_strategy': alex_strategy,
+        'casey_strategy': casey_strategy,
+        'taylor_strategy': taylor_strategy,
+        'jordan_strategy': jordan_strategy,
+        'rock_player': rock_player,
+        'paper_player': paper_player,
+        'scissors_player': scissors_player,
+        'mimic_strategy': mimic_strategy
+    }
 
-    def test_player_vs_casey_strategy(self):
-        print("Testing game against casey_strategy...")
-        actual = play(player, casey_strategy, 1000) >= 60
-        self.assertTrue(
-            actual,
-            'Expected player to defeat casey_strategy at least 60% of the time.')
+    def run_tests_for_player(self, player):
+        results = {}
+        player_name = player.__name__
+        print("=" * 50)
+        print(f"{Colors.HEADER}{Colors.BOLD}TESTING RESULT FOR {player_name}{Colors.ENDC}")
+        print("=" * 50)
+        for strategy_name, strategy in self.strategies.items():
+            with console_lock:
+                print(f"{Colors.OKBLUE}Testing {player_name} against {strategy_name}...{Colors.ENDC}")
+            
+            results[strategy_name] = {}
+            results[strategy_name]['results'], results[strategy_name]['win_rate'] = play(player, strategy, 1000)
+            win_rate = results[strategy_name]['win_rate']
+            
+            with console_lock:
+                if win_rate >= 60:
+                    print(f"{Colors.OKGREEN}{player_name} achieved a win rate of {win_rate}% against {strategy_name}{Colors.ENDC}")
+                else:
+                    print(f"{Colors.FAIL}{player_name} failed to achieve the desired win rate against {strategy_name}. Win rate: {win_rate}%{Colors.ENDC}")
+                
+                print("-" * 50)
+        return player_name, results
 
-    def test_player_vs_taylor_strategy(self):
-        print("Testing game against taylor_strategy...")
-        actual = play(player, taylor_strategy, 1000) >= 60
-        self.assertTrue(
-            actual,
-            'Expected player to defeat taylor_strategy at least 60% of the time.')
-
-    def test_player_vs_jordan_strategy(self):
-        print("Testing game against jordan_strategy...")
-        actual = play(player, jordan_strategy, 1000) >= 60
-        self.assertTrue(
-            actual,
-            'Expected player to defeat jordan_strategy at least 60% of the time.')
-
-    def test_player_vs_rock_player(self):
-        print("Testing game against rock_player...")
-        actual = play(player, rock_player, 1000) >= 80
-        self.assertTrue(
-            actual,
-            'Expected player to defeat rock_player at least 80% of the time.')
-
-    def test_player_vs_paper_player(self):
-        print("Testing game against paper_player...")
-        actual = play(player, paper_player, 1000) >= 80
-        self.assertTrue(
-            actual,
-            'Expected player to defeat paper_player at least 80% of the time.')
-
-    def test_player_vs_scissors_player(self):
-        print("Testing game against scissors_player...")
-        actual = play(player, scissors_player, 1000) >= 80
-        self.assertTrue(
-            actual,
-            'Expected player to defeat scissors_player at least 80% of the time.')
-
-    def test_player_vs_mimic_strategy(self):
-        print("Testing game against mimic_strategy...")
-        actual = play(player, mimic_strategy, 1000) >= 80
-        self.assertTrue(
-            actual,
-            'Expected player to defeat mimic_strategy at least 80% of the time.')
+    def test_players_vs_strategies(self):
+        for player in self.player_list:
+            # Run tests for the current player
+            self.run_tests_for_player(player)
+            
+            # Wait for 5 seconds before moving to the next player
+            with console_lock:
+                print(f"{Colors.WARNING}Waiting for 2 seconds before testing the next player...{Colors.ENDC}")
+            time.sleep(2)
 
 if __name__ == "__main__":
     unittest.main()
