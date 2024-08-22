@@ -6,8 +6,8 @@ def play(player1, player2, num_games, verbose=False):
     results = {"p1": 0, "p2": 0, "tie": 0}
 
     for _ in range(num_games):
-        p1_play = player1(p2_prev_play)
-        p2_play = player2(p1_prev_play)
+        p1_play = player1(p2_prev_play,player2.__name__)
+        p2_play = player2(p1_prev_play,player1.__name__)
 
         if p1_play == p2_play:
             results["tie"] += 1
@@ -48,8 +48,8 @@ def play_game(player1, player2, num_games, verbose=False):
     results = {"p1": 0, "p2": 0, "tie": 0}
 
     for _ in range(num_games):
-        p1_play = player1(p2_prev_play)
-        p2_play = player2(p1_prev_play)
+        p1_play = player1(p2_prev_play,player2.__name__)
+        p2_play = player2(p1_prev_play,player1.__name__)
 
         if p1_play == p2_play:
             results["tie"] += 1
@@ -76,13 +76,13 @@ def play_game(player1, player2, num_games, verbose=False):
     return win_rate
 
 
-def alex_strategy(prev_play, counter=[0]):
+def alex_strategy(prev_opponent_play, opponent_name, counter=[0]):
     counter[0] += 1
     choices = ["R", "R", "P", "P", "S"]
     return choices[counter[0] % len(choices)]
 
 
-def jordan_strategy(prev_opponent_play, opponent_history=[]):
+def jordan_strategy(prev_opponent_play, opponent_name, opponent_history=[]):
     opponent_history.append(prev_opponent_play)
     last_ten = opponent_history[-10:]
     most_frequent = max(set(last_ten), key=last_ten.count)
@@ -94,14 +94,14 @@ def jordan_strategy(prev_opponent_play, opponent_history=[]):
     return ideal_response[most_frequent]
 
 
-def taylor_strategy(prev_opponent_play):
+def taylor_strategy(prev_opponent_play, opponent_name):
     if prev_opponent_play == '':
         prev_opponent_play = "R"
     ideal_response = {'P': 'S', 'R': 'P', 'S': 'R'}
     return ideal_response[prev_opponent_play]
 
 
-def casey_strategy(prev_opponent_play,
+def casey_strategy(prev_opponent_play, opponent_name,
                    opponent_history=[],
                    play_order=[{
                        "RR": 0,
@@ -140,7 +140,7 @@ def casey_strategy(prev_opponent_play,
     return ideal_response[prediction]
 
 
-def human_player(prev_opponent_play):
+def human_player(prev_opponent_play, opponent_name):
     play = ""
     while play not in ['R', 'P', 'S']:
         play = input("[R]ock, [P]aper, [S]cissors? ")
@@ -148,23 +148,23 @@ def human_player(prev_opponent_play):
     return play
 
 
-def rock_player(prev_opponent_play):
+def rock_player(prev_opponent_play, opponent_name):
     return 'R'
 
 
-def paper_player(prev_opponent_play):
+def paper_player(prev_opponent_play, opponent_name):
     return 'P'
 
 
-def scissors_player(prev_opponent_play):
+def scissors_player(prev_opponent_play,opponent_name):
     return 'S'
 
 
-def mimic_strategy(prev_opponent_play):
+def mimic_strategy(prev_opponent_play, opponent_name):
     if prev_opponent_play == '':
         prev_opponent_play = 'R'
     return prev_opponent_play
 
 
-def random_strategy(prev_opponent_play):
+def random_strategy(prev_opponent_play, opponent_name):
     return random.choice(['R', 'P', 'S'])

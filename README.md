@@ -16,7 +16,7 @@ This project allows you to create your own RPS bots, compete against other bots,
 - **Step 1**: Open `contest.py`.
 - **Step 2**: Define up to **5 bots** with unique strategies.
   - You can create simple or complex bots using any approach you like.
-  - **Rule**: Out of the 5 bots, only **2 bots** can be designed to selectively code against specific enemy bots (i.e., a bot that alters its strategy based on the opponent).
+  - **Rule**: Out of the 5 bots, only **1 bot** can be designed to selectively code against specific enemy bots (i.e., a bot that alters its strategy based on the opponent).
 - **Step 3**: Save your changes, make sure you add a comment with your name beside your bot.
 
 ### Example Bot Implementation in `contest.py`:
@@ -36,7 +36,7 @@ def my_second_bot(prev_opponent_play, my_history=[]):
 
 1. **Bot Submission**:
    - You can submit up to **5 bots**.
-   - Out of these, upto **2 bots** are allowed to have a strategy that selectively codes against specific opponent bots.
+   - Out of these, upto **1 bot** is allowed to have a strategy that selectively codes against specific opponent bots.
 
 2. **Bot Complexity**:
    - Bots can range from simple (e.g., always playing Rock) to very complex (e.g., machine learning-based strategies).
