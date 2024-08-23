@@ -1,12 +1,12 @@
 from bots import play, jordan_strategy, casey_strategy, alex_strategy, taylor_strategy, human_player, random_strategy, mimic_strategy, rock_player, paper_player, scissors_player
-from hpx import hyperbeam, elden_ring, maverick, dragon_dance, SuperBaby
+from hpx import HyperBeam, EldenRing, Maverick, DragonDance, SuperBaby
 
 
 strategies = [
-    ("hyperbeam", hyperbeam),  # hpx - hyperbeam
-    ("elden_ring", elden_ring),  # hpx - elden_ring
-    ("maverick", maverick),  # hpx - maverick
-    ("dragon_dance", dragon_dance),  # hpx - dragon_dance
+    ("HyperBeam", HyperBeam),  # hpx - HyperBeam
+    ("EldenRing", EldenRing),  # hpx - EldenRing
+    ("Maverick", Maverick),  # hpx - Maverick
+    ("DragonDance", DragonDance),  # hpx - DragonDance
     ("SuperBaby", SuperBaby),  # hpx - SuperBaby
     ("alex_strategy", alex_strategy),
     ("casey_strategy", casey_strategy),
