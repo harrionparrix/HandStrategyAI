@@ -36,14 +36,14 @@ def my_second_bot(prev_opponent_play, my_history=[]):
 
 1. **Bot Submission**:
    - You can submit up to **5 bots**.
-   - Out of these, upto **1 bot** is allowed to have a strategy that selectively codes against specific opponent bots.
+   - Out of these, upto **1 bot** is allowed to have a strategy that selectively codes against **ONE** specific opponent bot.
 
 2. **Bot Complexity**:
    - Bots can range from simple (e.g., always playing Rock) to very complex (e.g., machine learning-based strategies).
    - The complexity of your bots is up to you, but the average score wins. This means that creating a balanced bot with consistent performance may be more effective than a highly specialized bot.
 
 3. **Selective Coding**:
-   - If you choose to create a selective bot, make sure it only targets specific opponent bots. All other player bots must have generalized strategies.
+   - If you choose to create a selective bot, make sure it only targets the one specific opponent bot. All other player bots must have generalized strategies. (Eg. Function One : if mimic_strategy => algo1 , else algo2)
 
 4. **Scoring**:
    - Each bot will be matched against every other bot, and the win rates will be recorded.
