@@ -1,5 +1,5 @@
 from bots import play_game, jordan_strategy, casey_strategy, alex_strategy, taylor_strategy, human_player, random_strategy, mimic_strategy, rock_player, paper_player, scissors_player
-from contest import hpx1, hpx2, hpx3, hpx4, hpx5
+from contest import ninja_case, elden_ring, Deez, MnM, SuperBaby
 import sys
 import time
 from datetime import datetime, timedelta
@@ -7,11 +7,11 @@ import concurrent.futures
 
 
 strategies = [
-    ("ninja_case", hpx1),  # hpx - ninja_case
-    ("elden_ring", hpx2),  # hpx - elden_ring
-    ("Deez", hpx3),  # hpx - Deez
-    ("MnM", hpx4),  # hpx - MnM
-    ("SuperBaby", hpx5),  # hpx - SuperBaby
+    ("ninja_case", ninja_case),  # hpx - ninja_case
+    ("elden_ring", elden_ring),  # hpx - elden_ring
+    ("Deez", Deez),  # hpx - Deez
+    ("MnM", MnM),  # hpx - MnM
+    ("SuperBaby", SuperBaby),  # hpx - SuperBaby
     ("alex_strategy", alex_strategy),
     ("casey_strategy", casey_strategy),
     ("taylor_strategy", taylor_strategy),

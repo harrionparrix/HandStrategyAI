@@ -1,6 +1,6 @@
 import unittest
 from bots import play, jordan_strategy, casey_strategy, alex_strategy, taylor_strategy, mimic_strategy, rock_player, paper_player, scissors_player
-from contest import hpx1, hpx2, hpx3, hpx4, hpx5
+from contest import ninja_case, elden_ring, Deez, MnM, SuperBaby
 import threading
 import time
 
@@ -19,7 +19,7 @@ class Colors:
 console_lock = threading.Lock()
 
 class UnitTests(unittest.TestCase):
-    player_list = [hpx1, hpx2, hpx3, hpx4, hpx5]  # List of bots to test
+    player_list = [ninja_case, elden_ring, Deez, MnM, SuperBaby]  # List of bots to test
 
     strategies = {
         'alex_strategy': alex_strategy,
