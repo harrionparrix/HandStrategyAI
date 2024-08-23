@@ -37,7 +37,7 @@ def my_second_bot(prev_opponent_play, my_history=[]):
 1. **Bot Submission**:
    - You can submit up to **5 bots**.
    - Out of these, upto **1 bot** is allowed to have a strategy that selectively codes against **ONE** specific opponent bot.
-
+   - Make your own file with your initials. Import and add it to **fight.py**, **ranking.py** and **main.py**.
 2. **Bot Complexity**:
    - Bots can range from simple (e.g., always playing Rock) to very complex (e.g., machine learning-based strategies).
    - The complexity of your bots is up to you, but the average score wins. This means that creating a balanced bot with consistent performance may be more effective than a highly specialized bot.

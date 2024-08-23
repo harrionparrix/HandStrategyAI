@@ -1,10 +1,13 @@
 from bots import play, jordan_strategy, casey_strategy, alex_strategy, taylor_strategy, human_player, random_strategy, mimic_strategy, rock_player, paper_player, scissors_player
-from contest import player, player2
+from hpx import hyperbeam, elden_ring, maverick, dragon_dance, SuperBaby
 
 
 strategies = [
-    ("player", player), # add unique name
-    ("player2", player2), # add unique name
+    ("hyperbeam", hyperbeam),  # hpx - hyperbeam
+    ("elden_ring", elden_ring),  # hpx - elden_ring
+    ("maverick", maverick),  # hpx - maverick
+    ("dragon_dance", dragon_dance),  # hpx - dragon_dance
+    ("SuperBaby", SuperBaby),  # hpx - SuperBaby
     ("alex_strategy", alex_strategy),
     ("casey_strategy", casey_strategy),
     ("taylor_strategy", taylor_strategy),

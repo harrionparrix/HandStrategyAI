@@ -1,5 +1,5 @@
 from bots import play_game, jordan_strategy, casey_strategy, alex_strategy, taylor_strategy, human_player, random_strategy, mimic_strategy, rock_player, paper_player, scissors_player
-from contest import ninja_case, elden_ring, Deez, MnM, SuperBaby
+from hpx import hyperbeam, elden_ring, maverick, dragon_dance, SuperBaby
 import sys
 import time
 from datetime import datetime, timedelta
@@ -7,10 +7,10 @@ import concurrent.futures
 
 
 strategies = [
-    ("ninja_case", ninja_case),  # hpx - ninja_case
+    ("hyperbeam", hyperbeam),  # hpx - hyperbeam
     ("elden_ring", elden_ring),  # hpx - elden_ring
-    ("Deez", Deez),  # hpx - Deez
-    ("MnM", MnM),  # hpx - MnM
+    ("maverick", maverick),  # hpx - maverick
+    ("dragon_dance", dragon_dance),  # hpx - dragon_dance
     ("SuperBaby", SuperBaby),  # hpx - SuperBaby
     ("alex_strategy", alex_strategy),
     ("casey_strategy", casey_strategy),
@@ -28,7 +28,7 @@ scores = {name: 0 for name, _ in strategies}
 
 
 # outer_iterations = 1000
-outer_iterations = 1
+outer_iterations = 1000
 total_strategies = len(strategies)
 total_pairs = total_strategies * (total_strategies - 1) // 2
 total_iterations = outer_iterations * total_pairs
