@@ -1,5 +1,6 @@
 from bots import play_game, jordan_strategy, casey_strategy, alex_strategy, taylor_strategy, human_player, random_strategy, mimic_strategy, rock_player, paper_player, scissors_player
 from hpx import HyperBeam, EldenRing, Maverick, DragonDance, SuperBaby
+from prak import kyle_demeantrius, nostradamus, magic_mike, vladamir, hikaru
 import sys
 import time
 from datetime import datetime, timedelta
@@ -12,6 +13,11 @@ strategies = [
     ("Maverick", Maverick),  # hpx - Maverick
     ("DragonDance", DragonDance),  # hpx - DragonDance
     ("SuperBaby", SuperBaby),  # hpx - SuperBaby
+    ('kyle_demeantrius',kyle_demeantrius), # prak bots
+    ('nostradamus',nostradamus), # prak bots
+    ('magic_mike', magic_mike), # prak bots
+    ('vladamir', vladamir), # prak bots
+    ('hikaru', hikaru), # prak bots
     ("alex_strategy", alex_strategy),
     ("casey_strategy", casey_strategy),
     ("taylor_strategy", taylor_strategy),

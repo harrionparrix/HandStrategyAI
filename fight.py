@@ -1,6 +1,7 @@
 import unittest
 from bots import play, jordan_strategy, casey_strategy, alex_strategy, taylor_strategy, mimic_strategy, rock_player, paper_player, scissors_player
 from hpx import HyperBeam, EldenRing, Maverick, DragonDance, SuperBaby
+from prak import kyle_demeantrius, nostradamus, magic_mike, vladamir, hikaru
 import threading
 import time
 
@@ -19,7 +20,7 @@ class Colors:
 console_lock = threading.Lock()
 
 class UnitTests(unittest.TestCase):
-    player_list = [HyperBeam, EldenRing, Maverick, DragonDance, SuperBaby]  # List of bots to test
+    player_list = [ nostradamus, magic_mike, vladamir, hikaru , HyperBeam, EldenRing, Maverick, DragonDance, SuperBaby,kyle_demeantrius,]  # List of bots to test
 
     strategies = {
         'alex_strategy': alex_strategy,
