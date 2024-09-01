@@ -1,5 +1,6 @@
 from bots import play, jordan_strategy, casey_strategy, alex_strategy, taylor_strategy, human_player, random_strategy, mimic_strategy, rock_player, paper_player, scissors_player
 from hpx import HyperBeam, EldenRing, Maverick, DragonDance, SuperBaby
+from srajan import Avengers, Ayanokoji, my_moves
 
 
 strategies = [
@@ -8,6 +9,8 @@ strategies = [
     ("Maverick", Maverick),  # hpx - Maverick
     ("DragonDance", DragonDance),  # hpx - DragonDance
     ("SuperBaby", SuperBaby),  # hpx - SuperBaby
+    ("Avengers", Avengers), # srajan - Avengers
+    ("Ayanokoji", Ayanokoji), # srajan - Ayanokoji
     ("alex_strategy", alex_strategy),
     ("casey_strategy", casey_strategy),
     ("taylor_strategy", taylor_strategy),
