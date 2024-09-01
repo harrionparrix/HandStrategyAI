@@ -43,7 +43,7 @@ def nostradamus(prev_opponent_play,opponent_name, my_history = []):
 
 def kyle_demeantrius(prev_opponent_play,opponent_name, my_history = []):
     moves = {'R': 1, 'P':2, 'S': 3}
-    moves_rev = {1:'R', 2: 'P',3: 'S'}
+    moves_rev = {1:'P', 2: 'S',3: 'R'}
     avg = 0
     for i in my_history:
         try:

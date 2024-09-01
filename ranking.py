@@ -34,7 +34,7 @@ scores = {name: 0 for name, _ in strategies}
 
 
 # outer_iterations = 1000
-outer_iterations = 1000
+outer_iterations = 200
 total_strategies = len(strategies)
 total_pairs = total_strategies * (total_strategies - 1) // 2
 total_iterations = outer_iterations * total_pairs
