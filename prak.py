@@ -1,5 +1,5 @@
 import random
-
+# manauj
 def vladamir(prev_opponent_play,opponent_name, my_history = []):
     move = random.randint(1,3)
     if  move == 1:
